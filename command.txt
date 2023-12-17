@@ -1,0 +1,1 @@
+ sudo docker run -v $(pwd)/src:/var/www/html -d -p 80:80 --name my-running-app my-php-app

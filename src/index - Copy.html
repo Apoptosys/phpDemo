@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static HTML Page with SQLite Data</title>
+</head>
+<body>
+    <h1>Data from SQLite Database</h1>
+    <ul id="dataList"></ul>
+
+    <script>
+        // Use Ajax to fetch data from the PHP script
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'getData.php', true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+                updateDataList(data);
+            }
+        };
+        xhr.send();
+
+        // Function to update the HTML content
+        function updateDataList(data) {
+            var dataList = document.getElementById('dataList');
+            data.forEach(function (item) {
+                var li = document.createElement('li');
+                li.textContent = JSON.stringify(item);
+                dataList.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
+
+
