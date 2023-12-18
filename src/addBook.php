@@ -3,8 +3,12 @@
 $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'webp'); // valid extensions
 $path = 'assets/img/'; // upload directory
 
-if(!empty($_POST['name']) || !empty($_POST['email']) || $_FILES['image'])
+if(!empty($_POST['title']) && !empty($_POST['author']) && !empty($_FILES['image']))
 {
+//TODO:
+//Here do additional validation for parameters
+
+  
 $img = $_FILES['image']['name'];
 $tmp = $_FILES['image']['tmp_name'];
 
